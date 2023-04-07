@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+  <title>Casa da Tecnologia</title>
+
+  <script>
+    function cadastrar_fornecedor() {
+      var nome_fornecedor = document.getElementById("nome_fornecedor").value;
+      var endereco_fornecedor = document.getElementById("endereco_fornecedor").value;
+      var contato_fornecedor = document.getElementById("contato_fornecedor").value;
+      var email_fornecedor = document.getElementById("email_fornecedor").value;
+    }
+
+    var dadosAjax = {
+      'nome_fornecedor': nome_fornecedor,
+      'endereco_fornecedor': endereco_fornecedor,
+      'contato_fornecedor': contato_fornecedor,
+      'email_fornecedor': email_fornecedor
+    };
+
+    var pageUrl = 'grava_fornecedor.php';
+
+    $.ajax({
+      url: pageUrl,
+      data: dadosAjax,
+      type: 'POST',
+      cache: false,
+      error: function (XMLHttpRequest, textStatus, errorThrown) {
+        alert("Erro na gravação dos dados do fornecedor!!");
+      },
+      success: function (result) {
+        alert("Gravação do dados do fornecedor efetuada com sucesso!");
+        return;
+      }
+    });
+  </script>
+  
+</head>
+
+<body>
+  <h1>Cadastro de fornecedor</h1>
+  <p></p>
+
+  <p>Inclua as informações do fornecedor abaixo</p>
+
+  <font>Nome do fornecedor: </font>
+
+  <input type="text" id="nome_fornecedor"></input>
+  <p></p>
+
+  <font>Endereço do fornecedor: </font>
+
+  <input type="text" id="endereco_fornecedor"></input>
+  <p></p>
+
+  <font>Contato do fornecedor: </font>
+
+  <input type="text" id="contato_fornecedor"></input>
+  <p></p>
+
+  <font>E-mail do fornecedor: </font>
+  <input type="text" id="email_fornecedor"></input>
+  <p></p>
+
+  <input type="button" name="botao-ok" value="Cadastrar" id="botao_cadastra_fornecedor" onClick="cadastrar_fornecedor()">
+
+</body>
+
+</html>
